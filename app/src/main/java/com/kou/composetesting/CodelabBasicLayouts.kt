@@ -5,6 +5,9 @@ import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
@@ -121,6 +124,27 @@ fun AlignYourBodyRow(
     }
 }
 
+@Composable
+fun FavoriteCollectionsGrid(
+    modifier: Modifier = Modifier
+) {
+    LazyHorizontalGrid(
+        rows = GridCells.Fixed(2),
+        contentPadding = PaddingValues(horizontal = 16.dp),
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+        verticalArrangement = Arrangement.spacedBy(8.dp),
+        modifier = modifier.height(120.dp)
+    ) {
+        items(favoriteCollectionsData) {item ->
+            FavoriteCollectionCard(
+                drawable = item.drawable,
+                text = item.text,
+                modifier = Modifier.height(56.dp)
+            )
+        }
+    }
+}
+
 
 @Preview(showBackground = true, backgroundColor = previewBackgroundColor)
 @Composable
@@ -159,6 +183,16 @@ fun FavoriteCollectionCardPreview() {
 fun AlignYourBodyRowPreview() {
     ComposeTestingTheme {
         AlignYourBodyRow(
+            modifier = Modifier.padding(8.dp)
+        )
+    }
+}
+
+@Preview(showBackground = true, backgroundColor = previewBackgroundColor)
+@Composable
+fun FavoriteCollectionsGridPreview() {
+    ComposeTestingTheme {
+        FavoriteCollectionsGrid(
             modifier = Modifier.padding(8.dp)
         )
     }
