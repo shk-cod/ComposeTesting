@@ -14,6 +14,8 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountCircle
+import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -187,6 +189,41 @@ fun HomeScreen(
     }
 }
 
+@Composable
+fun MyBottomNavigation(modifier: Modifier = Modifier) {
+    BottomNavigation(
+        backgroundColor = MaterialTheme.colors.background,
+        modifier = modifier
+    ) {
+        BottomNavigationItem(
+            icon = {
+                Icon(
+                    imageVector = Icons.Default.Home,
+                    contentDescription = null
+                )
+            },
+            label = {
+                Text(stringResource(R.string.bottom_navigation_home))
+            },
+            selected = true,
+            onClick = {}
+        )
+        BottomNavigationItem(
+            icon = {
+                Icon(
+                    imageVector = Icons.Default.AccountCircle,
+                    contentDescription = null
+                )
+            },
+            label = {
+                Text(stringResource(R.string.bottom_navigation_profile))
+            },
+            selected = false,
+            onClick = {}
+        )
+    }
+}
+
 
 @Preview(showBackground = true, backgroundColor = previewBackgroundColor)
 @Composable
@@ -255,6 +292,14 @@ fun HomeSectionPreview() {
 fun HomeScreenPreview() {
     ComposeTestingTheme {
         HomeScreen()
+    }
+}
+
+@Preview(showBackground = true, backgroundColor = previewBackgroundColor)
+@Composable
+fun MyBottomNavigationPreview() {
+    ComposeTestingTheme {
+        MyBottomNavigation()
     }
 }
 
