@@ -224,6 +224,17 @@ fun MyBottomNavigation(modifier: Modifier = Modifier) {
     }
 }
 
+@Composable
+fun CodelabBasicLayoutsApp() {
+    ComposeTestingTheme {
+        Scaffold(
+            bottomBar = { MyBottomNavigation() }
+        ) { padding ->
+            HomeScreen(Modifier.padding(padding))
+        }
+    }
+}
+
 
 @Preview(showBackground = true, backgroundColor = previewBackgroundColor)
 @Composable
