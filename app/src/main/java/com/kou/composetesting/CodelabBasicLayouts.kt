@@ -72,7 +72,7 @@ fun AlignYourBodyElement(
         )
         Text(
             text = stringResource(text),
-//            style = MaterialTheme.typography.h3,
+            style = MaterialTheme.typography.h3,
             modifier = Modifier.paddingFromBaseline(
                 top = 24.dp, bottom = 8.dp
             )
@@ -102,7 +102,7 @@ fun FavoriteCollectionCard(
             )
             Text(
                 text = stringResource(text),
-//                style = MaterialTheme.typography.h3,
+                style = MaterialTheme.typography.h3,
                 modifier = Modifier.padding(horizontal = 16.dp)
             )
         }
@@ -142,6 +142,18 @@ fun FavoriteCollectionsGrid(
                 modifier = Modifier.height(56.dp)
             )
         }
+    }
+}
+
+@Composable
+fun HomeSection(
+    @StringRes title: Int,
+    modifier: Modifier = Modifier,
+    content: @Composable () -> Unit
+) {
+    Column(modifier) {
+        Text(stringResource(title))
+        content()
     }
 }
 
@@ -195,6 +207,16 @@ fun FavoriteCollectionsGridPreview() {
         FavoriteCollectionsGrid(
             modifier = Modifier.padding(8.dp)
         )
+    }
+}
+
+@Preview(showBackground = true, backgroundColor = previewBackgroundColor)
+@Composable
+fun HomeSectionPreview() {
+    ComposeTestingTheme {
+        HomeSection(R.string.align_your_body) {
+            AlignYourBodyRow()
+        }
     }
 }
 
